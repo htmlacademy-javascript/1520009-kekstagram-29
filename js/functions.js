@@ -25,6 +25,7 @@ function isPalindrom(string) {
   return true;
 }
 window.console.log(isPalindrom('топот'));
+
 //вариант с методом split (как подсказал наставник Юрий)
 // const isPolindrom = (string) => {
 //   const normalizedString = string.replaceAll(' ', '').toLowerCase();
