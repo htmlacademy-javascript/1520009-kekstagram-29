@@ -66,20 +66,21 @@ const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0,
 //создаём массив с объектами которые описывают комментарии
 const getComments = () => ({
   id: getRandomPositiveInteger(0, 30),
-  avatar: `img/${getRandomPositiveInteger(1, 6)}.svg`,
+  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
   message: MESSAGES[getRandomPositiveInteger(0, MESSAGES.length)],
   name: NAMES[getRandomPositiveInteger(0, NAMES.length)],
 });
 
 //создаем комментарии
 const createPhotoDescription = () => ({
-  id: getRandomPositiveInteger(1, 25),
-  avatar: `img/${getRandomPositiveInteger(1, 6)}.svg`,
+  id: getRandomPositiveInteger (1, 25),
+  url: `photos/${getRandomPositiveInteger(1, 25)}.jpg`,
   description: getRandomArrayElement(DESCRIPTION),
   message: getRandomArrayElement(MESSAGES),
   name: getRandomArrayElement(NAMES),
   likes: getRandomPositiveInteger(15, 200),
-  comments: getRandomArrayElement(getComments),
+  comments: Array.from(
+    { length: getRandomArrayElement(0, 30) }, getComments),
 });
 const PhotoObj = Array.from ({length: objectsValue}, createPhotoDescription);
 window.console.log(PhotoObj);
