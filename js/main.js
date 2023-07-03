@@ -82,5 +82,5 @@ const createPhotoDescription = () => ({
   comments: Array.from(
     { length: getRandomArrayElement(0, 30) }, getComments),
 });
-const PhotoObj = Array.from ({length: objectsValue}, createPhotoDescription);
-window.console.log(PhotoObj);
+const photoObj = Array.from ({length: objectsValue}, createPhotoDescription);
+window.console.log(photoObj);
