@@ -49,3 +49,36 @@ function extractNumber(arg) {
 
 window.console.log(extractNumber('2023 год'));
 //последняя функция ругается на то что i не определено, не могу понять почему, если есть возможность оставить коментарий, был бы благодарен
+
+function parseTime(time) {
+  const parts = time.split(':').map(Number);
+  const [hours, minutes] = parts;
+  const minutesPerHour = 60;
+
+  return hours * minutesPerHour + minutes;
+}
+
+//создаем функцию проверки времени встречи в рабочий или нерабочий период
+
+function parseTime(time) {
+  const parts = time.split(':').map(Number);
+  const [hours, minutes] = parts;
+  const minutesPerHour = 60;
+
+  return hours * minutesPerHour + minutes;
+}
+
+function isMeetingTime (beginningOfWorkingDay, endingOfWorkingDay, beginningOfMeeting, duration) {
+  const beginningOfWorkingDayMinutes = parseTime(beginningOfWorkingDay);
+  const endingOfWorkingDayMinutes = parseTime(endingOfWorkingDay);
+  const beginningOfMeetingMinutes = parseTime(beginningOfMeeting);
+  const endingOfMeetingMinutes = beginningOfMeetingMinutes + duration;
+  return beginningOfMeetingMinutes >= beginningOfWorkingDayMinutes && endingOfMeetingMinutes <= endingOfWorkingDayMinutes;
+}
+
+
+window.console.log (isMeetingTime('08:00', '17:30', '14:00', 90));
+window.console.log (isMeetingTime('8:0', '10:0', '8:0', 120));
+window.console.log (isMeetingTime('08:00', '14:30', '14:00', 90));
+window.console.log (isMeetingTime('14:00', '17:30', '18:0', 90));
+window.console.log (isMeetingTime('08:00', '17:30', '8:00', 900));
